@@ -10,6 +10,7 @@ namespace Promedio
     {
         private double [] valores;
         private int cant_num;
+        private double promedio;
         public Promedio()
         {
             valores = new double[100];
@@ -19,23 +20,38 @@ namespace Promedio
         {
             valores [cant_num]=num;
             cant_num++;
+            promedio = 0;
         }
 
         public double Calcuar_promedio()
         {
-            double resultado = 0;
 
             if (cant_num == 0)
             {
-                resultado = 0;
+                promedio = 0;
             }
 
             for(int i=0; i < cant_num; i++)
             {
-                resultado += valores[i];
+                promedio += valores[i];
             }
-            resultado = resultado / cant_num;
-            return resultado;
+            promedio = promedio / cant_num;
+            return promedio;
+        }
+        public double Val_sup_prom(int num)
+        {
+            double[] val_sup_prom = new double[100];
+            int pos = 0;
+            
+            for (int i = 0; i < cant_num; i++)
+            {
+                if (valores[i] > promedio)
+                {
+                    val_sup_prom[pos] = valores[i];
+                    pos++;
+                }
+            }
+            return val_sup_prom[num];
         }
     }
 }
