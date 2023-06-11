@@ -8,14 +8,16 @@ namespace Promedio
 {
     class Promedio
     {
-        private double valores;
+        private double [] valores;
         private int cant_num;
         public Promedio()
         {
+            valores = new double[100];
+            cant_num = 0;
         }
         public void Agregar_valor(int num)
         {
-            valores += num;
+            valores [cant_num]=num;
             cant_num++;
         }
 
@@ -28,7 +30,11 @@ namespace Promedio
                 resultado = 0;
             }
 
-            resultado = valores / cant_num;
+            for(int i=0; i < cant_num; i++)
+            {
+                resultado += valores[i];
+            }
+            resultado = resultado / cant_num;
             return resultado;
         }
     }
